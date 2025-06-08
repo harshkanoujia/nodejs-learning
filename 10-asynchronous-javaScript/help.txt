@@ -1,0 +1,101 @@
+1. Synchronous Code
+What is it? Code that runs line by line, waiting for each line to finish before moving to the next.
+
+Example:                                                   //     Output:
+                                                           
+console.log("Start");                                      //     Start
+console.log("End");                                        //     End
+
+When to use it? When tasks are quick and don’t depend on external resources (like a file or a server).
+
+------------------------------------------------------------------------------------------------------------------------------------------
+
+2. Asynchronous Code
+What is it? Code that can perform tasks in the background and continue running other code without waiting.
+
+Example:                                                                                         //       Output:
+                                                                                                 
+console.log("Start");                                                                            //       Start
+setTimeout(() => console.log("Async Task"), 1000);                                               //       End
+console.log("End");                                                                              //       Async Task
+
+Why use it? To handle time-consuming tasks (e.g., fetching data from a server) without blocking the rest of the code.
+
+---------------------------------------------------------------------------------------------------------------------------------------------
+
+3. Callbacks
+What is it? A function passed as an argument to another function to run later.
+
+Example:                                                                                            //     Output:
+                                                                                                    
+function fetchData(callback) {                                                                      //     Start
+  setTimeout(() => {                                                                                //     End
+    callback("Data received");                                                                      //     Data received  //1sec after
+  }, 1000);
+}
+console.log("Start");
+fetchData((data) => console.log(data));
+console.log("End");
+
+Why use it? To handle async tasks when the result is ready.
+
+---------------------------------------------------------------------------------------------------------------------------------------------
+
+4. Promises
+What is it? A modern alternative to callbacks for handling async tasks. A promise represents a value that will be available in the future.
+States:
+Pending: The task is still running.
+Resolved: The task is done, and we got the result.
+Rejected: The task failed.
+
+Example:                                                                                               //      Output:
+
+const fetchData = new Promise((resolve, reject) => {                                                   //      Start
+  setTimeout(() => resolve("Data received"), 1000);                                                    //      End 
+});                                                                                                    //      Data received
+console.log("Start");
+fetchData.then((data) => console.log(data));
+console.log("End");
+
+Why use it? Promises are cleaner and avoid "callback hell."
+
+-------------------------------------------------------------------------------------------------------------------------------------------------
+
+5. Async/Await
+What is it? A simpler way to work with promises. It makes async code look like sync code.
+
+Example:                                                                                                  //      Output:
+
+async function fetchData() {                                                                              //      Start
+  return "Data received";                                                                                 //      Data received
+}                                                                                                         //      End
+
+async function main() {
+  console.log("Start");
+  const data = await fetchData();
+  console.log(data);
+  console.log("End");
+}
+main();
+
+Why use it? It’s easier to read and write than using .then() for promises.
+
+---------------------------------------------------------------------------------
+Putting It All Together:
+
+Sync: Code runs line by line. Simple but blocks other code if something is slow.
+Async: Allows other tasks to run while waiting for slow tasks.
+Callbacks: Older way to handle async tasks but can become messy.
+Promises: A cleaner way to handle async tasks without nesting callbacks.
+Async/Await: A modern, readable way to write async code based on promises.
+
+-------------------------------------------------------------------------------------
+
+Real-World Analogy
+Imagine ordering pizza:
+
+Sync: You wait in line until the pizza is ready. (Blocks others behind you.)
+Async: You place the order and come back later when it’s ready.
+Callback: The pizza shop calls you to say your pizza is ready.
+Promise: They promise to deliver the pizza when it’s ready. You can wait for it (then) or handle problems (catch).
+Async/Await: You wait patiently for the delivery with a clear understanding of when it arrives (await), and it feels like normal waiting.

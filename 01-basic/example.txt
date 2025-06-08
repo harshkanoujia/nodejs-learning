@@ -1,0 +1,2 @@
+//So this is the code of the Sync function 
+So this is the code of the ASync function 

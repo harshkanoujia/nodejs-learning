@@ -1,0 +1,125 @@
+Types of Functions: -
+
+
+1. Function with Parameters
+
+function add(a, b) {
+    return a + b;
+}
+const result = add(5, 3);                   // Call the function with arguments 5 and 3
+console.log(result);                        // Outputs: 8
+
+Parameters: a and b are placeholders for inputs.
+Return Value: The add function returns the sum of a and b.
+
+
+
+2. Anonymous Function
+An anonymous function has no name and is often used in callbacks:
+
+const multiply = function (a, b) {
+    return a * b;
+};
+console.log(multiply(4, 5));                   // Outputs: 20
+
+
+
+3. Arrow Function (ES6)
+Arrow functions provide a concise way to write functions:
+
+const greet = () => {
+    console.log("Hello, World!");
+};
+greet();                                        // Outputs: Hello, World!
+
+For single-line functions, you can omit the braces and return keyword:
+
+const square = (x) => x * x;
+console.log(square(4));                         // Outputs: 16
+
+How Does fs.readFileSync Relate to Functions?
+In your example:
+
+const data = fs.readFileSync('example.txt', 'utf8');
+
+fs.readFileSync is a function provided by the fs module in Node.js. This function reads a file synchronously and returns the content of the file.You assign its result (the file content) to the data variable.
+
+Summary:
+A function is a reusable block of code.
+data is a variable that holds the result of the function fs.readFileSync.
+Functions take inputs, do some processing, and optionally return outputs.
+
+-----------------------------------------------------------------------------------------
+How the fuction is define ? And fucntion is not only define with function keyword.
+
+1. Using the function Keyword.
+This is the traditional way to define a function.
+
+function greet() {
+    console.log("Hello, World!");
+}
+greet();                    // Outputs: Hello, World!
+
+
+2. Function Expression
+You can create a function and assign it to a variable. This is called a function expression.
+
+const greet = function () {
+    console.log("Hello, World!");
+};
+greet();                    // Outputs: Hello, World!
+
+Key Difference: Function expressions are not hoisted, meaning you cannot call the function before defining it.
+
+
+3. Arrow Functions (Introduced in ES6)
+Arrow functions provide a shorter syntax for writing functions.
+
+const greet = () => {
+    console.log("Hello, World!");
+};
+greet();                    // Outputs: Hello, World!
+
+Key Features: For single-line functions, you can omit {} and the return keyword:
+
+const square = (x) => x * x;
+console.log(square(4));     // Outputs: 16
+
+
+4. Constructor Function
+You can create a function using the Function constructor, though this is rarely used.
+
+const greet = new Function('console.log("Hello, World!");');
+greet();                    // Outputs: Hello, World!
+
+When to Use?: This is generally avoided because it makes debugging harder and may have security risks if used improperly.
+
+
+5. Object Method (Shorthand)
+Functions can also be defined as methods inside objects.
+
+const person = {
+    greet() {
+        console.log("Hello, World!");
+    },
+};
+person.greet();         // Outputs: Hello, World!
+
+
+6. Inline Function (IIFE - Immediately Invoked Function Expression)
+You can define and immediately call a function.
+
+(function () {
+    console.log("Hello, World!");
+})();                   // Outputs: Hello, World!
+
+Use Case: Used to create isolated scopes.
+
+
+Summary :- No, the function keyword is not mandatory. You can define functions in multiple ways:
+
+Function declarations (function greet() {})
+Function expressions (const greet = function () {})
+Arrow functions (const greet = () => {})
+Constructor functions (new Function())
+Methods inside objects or classes.
