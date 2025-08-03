@@ -1,34 +1,34 @@
 // -----This is callback function and our task is to convert this into promises----------------------------------------------------------------------------------------------------------
 
 // getCustomer(1, (customer) => {
-//     console.log('Customer: ', customer);
-//     if (customer.isGold) {
-//       getTopMovies((movies) => {
-//         console.log('Top movies: ', movies);
-//         sendEmail(customer.email, movies, () => {
-//           console.log('Email sent...')
-//         });
+//   console.log('Customer: ', customer);
+//   if (customer.isGold) {
+//     getTopMovies((movies) => {
+//       console.log('Top movies: ', movies);
+//       sendEmail(customer.email, movies, () => {
+//         console.log('Email sent...')
 //       });
-//     }
-//   });
+//     });
+//   }
+// });
 
 // function getCustomer(id, callback) {
 //   setTimeout(() => {
-//     callback({ 
-//           id: 1, 
-//           name: 'Mosh Hamedani', 
-//           isGold: true, 
-//           email: 'email' 
-//         });
-//     }, 4000);  
+//     callback({
+//       id: 1,
+//       name: 'Mosh Hamedani',
+//       isGold: true,
+//       email: 'email'
+//     });
+//   }, 4000);
 // }
-  
+
 // function getTopMovies(callback) {
-//     setTimeout(() => {
-//       callback(['movie1', 'movie2']);
-//     }, 4000);
+//   setTimeout(() => {
+//     callback(['movie1', 'movie2']);
+//   }, 4000);
 // }
-  
+
 // function sendEmail(email, movies, callback) {
 //   setTimeout(() => {
 //     callback();
@@ -40,44 +40,44 @@
 function getCustomer(id) {
   return new Promise((resolve, reject) => {
     setTimeout(() => {
-      resolve({ 
-            id: 1, 
-            name: 'Harsh', 
-            isGold: true, 
-            email: 'email' 
-          });
-      }, 4000);  
+      resolve({
+        id: 1,
+        name: 'Harsh',
+        isGold: true,
+        email: 'email'
+      });
+    }, 4000);
   })
 }
 
-function getTopMovies(){
-return new Promise((resolve, reject) => {
-  setTimeout(() => {
-    resolve(['movie1', 'movie2']);
-  }, 4000);
-})
-}
-
-function sendEmail(email,movies){
+function getTopMovies() {
   return new Promise((resolve, reject) => {
-    setTimeout(()=>{
-      resolve();
-    },4000)
+    setTimeout(() => {
+      resolve(['movie1', 'movie2']);
+    }, 4000);
   })
 }
 
-// function customer(){
+function sendEmail(email, movies) {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve();
+    }, 4000)
+  })
+}
+
+// function customer() {
 //   getCustomer(1)
 //     .then((customer) => {
 //       console.log('Customer: ', customer);
-//       if(customer.isGold)
+//       if (customer.isGold)
 //         return getTopMovies();
 //     })
-//     .then( movies => {
+//     .then(movies => {
 //       console.log('Top movies: ', movies)
 //       return sendEmail(customer.email, movies)
 //     })
-//     .then(()=>console.log('Email sent...'))
+//     .then(() => console.log('Email sent...'))
 //     .catch(error => console.log(error));
 // }
 // customer();
@@ -96,13 +96,9 @@ async function notifycustomer() {
       await sendEmail(customer.email, movies)
       console.log('Email sent...')
     }
-   } catch (error) {
-      console.log(error.message)
+  } catch (error) {
+    console.log(error.message)
   }
 }
+
 notifycustomer();
-
-
-
-
-

@@ -1,4 +1,4 @@
-function log(req, res,next){
+function log(req, res, next) {
     console.log("Authenticating...")
     next();
 }

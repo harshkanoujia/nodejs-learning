@@ -1,30 +1,31 @@
 const express = require("express")
-const app = express()                               //Initialize an Express app using const app = express().
+const app = express()                               // Initialize an Express app using const app = express().
 const port = process.env.PORT || 5000
+
 
 app.get("/",function(req,res){                      // while this is succesfully run on postman the url is http://localhost:5000/ and request is Get 
     // res.status(200);
     res.send("This is home")
-    // res.send(req.body)                              //This is the "req.body" in which if user submit any data then we receive it in the postman  
-})                                                  //like { name: Harsh, rollno: 15} then we will recieve this data 
+    // res.send(req.body)                           // This is the "req.body" in which if user submit any data then we receive it in the postman  
+})                                                  // like { name: Harsh, rollno: 15} then we will recieve this data 
 
 app.get("/register/:id",function(req,res){          // In this we are passing the parameter and wtih the help of `req.params` we get it  
     res.send(req.params)                            // this will test in postman so that we will get the id
 })
 
-app.get("/register/:id",function(req,res){          //now we add the query so now we add the some query in url 
+app.get("/register/:id",function(req,res){          // now we add the query so now we add the some query in url 
     res.send(req.query)                             // http://localhost:5000/register/home?name=param like this in which i pass only one parmeter and the query return this 
-})                                                  //http://localhost:5000/register/home?name=Harsh&age=21  now in this URL we pass two parameter and '&' it is the parameter seprator
+})                                                  // http://localhost:5000/register/home?name=Harsh&age=21  now in this URL we pass two parameter and '&' it is the parameter seprator
 
 app.post("/contact",function(req,res){
     res.send("This is only contact.")
 })
 
-app.get("/about",function(req,res){                 //this will run on postman the url is http://localhost:5000/about and request is Get 
+app.get("/about",function(req,res){                 // this will run on postman the url is http://localhost:5000/about and request is Get 
     res.send("Hello Harsh")
 })
 
-app.get("/home",function(req,res){                  //this will run on postman the url is http://localhost:5000/home and request is Get
+app.get("/home",function(req,res){                  // this will run on postman the url is http://localhost:5000/home and request is Get
     res.send("Hello home")                          // res.set('Content-Type', 'text/html');
     res.status(200)                                 // res.send("<h1>Hello GFG Learner!</h1>");
 })// .listen(5000) 
